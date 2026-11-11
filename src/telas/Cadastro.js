@@ -5,6 +5,7 @@ import Campo from '../componentes/Campo';
 import Botao from '../componentes/Botao';
 
 export default function Cadastro({ ir }) {
+  // Controla os dados preenchidos no formulário de cadastro
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
