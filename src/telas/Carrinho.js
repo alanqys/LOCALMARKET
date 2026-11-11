@@ -2,9 +2,9 @@ import { View, Text } from 'react-native';
 import { estilos, formatarMoeda } from '../global';
 import Cabecalho from '../componentes/Cabecalho';
 import Botao from '../componentes/Botao';
-
+//
 export const TAXA_ENTREGA = 5;
-
+//
 export default function Carrinho({ ir, carrinho, mudarQtd, subtotal }) {
   return (
     <View style={estilos.tela}>
