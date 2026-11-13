@@ -8,12 +8,14 @@ import Checkout from './src/telas/Checkout';
 import Perfil from './src/telas/Perfil';
 import Notificacoes from './src/telas/Notificacoes';
 import Acompanhamento from './src/telas/Acompanhamento';
+import { USUARIO_INICIAL } from './src/data';
 
 const TELAS = { cadastro: Cadastro, catalogo: Catalogo, ofertas: Ofertas, carrinho: Carrinho,
   checkout: Checkout, perfil: Perfil, notificacoes: Notificacoes, acompanhamento: Acompanhamento };
 
 export default function App() {
   const [tela, setTela] = useState('cadastro');   // tela atual (navegação simples com state)
+  const [usuario, setUsuario] = useState(USUARIO_INICIAL); // objeto usuário (nome, email, telefone, endereco)
   const [carrinho, setCarrinho] = useState([]);   // itens: [{...produto, qtd}]
   const [totalPedido, setTotalPedido] = useState(0); // total do pedido finalizado
 
@@ -33,7 +35,7 @@ export default function App() {
   const Tela = TELAS[tela];
   return (
     <View style={{ flex: 1 }}>
-      <Tela ir={setTela} carrinho={carrinho} adicionar={adicionar} mudarQtd={mudarQtd}
+      <Tela ir={setTela} usuario={usuario} setUsuario={setUsuario} carrinho={carrinho} adicionar={adicionar} mudarQtd={mudarQtd}
         subtotal={subtotal} totalPedido={totalPedido} finalizar={finalizar} />
     </View>
   );
