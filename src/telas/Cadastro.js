@@ -4,11 +4,17 @@ import { estilos } from '../global';
 import Campo from '../componentes/Campo';
 import Botao from '../componentes/Botao';
 
-export default function Cadastro({ ir }) {
+export default function Cadastro({ ir, usuario, setUsuario }) {
   // Controla os dados preenchidos no formulário de cadastro
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+
+  // guarda nome e email digitados no objeto usuário (se ficar vazio, mantém o que já tinha)
+  const cadastrar = () => {
+    setUsuario({ ...usuario, nome: nome || usuario.nome, email: email || usuario.email });
+    ir('catalogo');
+  };
 
   return (
     <View style={[estilos.tela, estilos.centro, { justifyContent: 'center' }]}>
@@ -19,7 +25,7 @@ export default function Cadastro({ ir }) {
         <Campo placeholder="Nome" value={nome} onChangeText={setNome} />
         <Campo placeholder="Email" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
         <Campo placeholder="Senha" value={senha} onChangeText={setSenha} secureTextEntry />
-        <Botao titulo="Cadastrar" aoPressionar={() => ir('catalogo')} />
+        <Botao titulo="Cadastrar" aoPressionar={cadastrar} />
       </View>
 
       <Text style={[estilos.texto, { marginTop: 20 }]}>
