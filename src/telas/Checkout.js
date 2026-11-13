@@ -8,14 +8,15 @@ import Botao from '../componentes/Botao';
 
 const FORMAS_PAGAMENTO = ['Pix', 'Cartão', 'Dinheiro'];
 
-export default function Checkout({ ir, subtotal, finalizar }) {
-  const [endereco, setEndereco] = useState('Rua das Flores, 120 - Centro');
+export default function Checkout({ ir, usuario, subtotal, finalizar }) {
+  const [endereco, setEndereco] = useState(usuario.endereco); // começa com o endereço do usuário
   const [pagamento, setPagamento] = useState('Pix');
   const total = subtotal + TAXA_ENTREGA;
 
   return (
     <View style={estilos.tela}>
       <Cabecalho titulo="Confirmar e Pagar" aoVoltar={() => ir('carrinho')} />
+      <Text style={[estilos.texto, estilos.margemBaixo]}>Cliente: {usuario.nome} • {usuario.telefone}</Text>
       <Campo rotulo="ENDEREÇO DE ENTREGA" value={endereco} onChangeText={setEndereco} />
 
       <Text style={estilos.texto}>FORMA DE PAGAMENTO</Text>
