@@ -5,12 +5,17 @@ import Cabecalho from '../componentes/Cabecalho';
 import Campo from '../componentes/Campo';
 import Botao from '../componentes/Botao';
 
-export default function Perfil({ ir }) {
-  const [dados, setDados] = useState({ nome: 'Alan Marcelo', email: 'alan@localmarket.com',
-    telefone: '(83) 99999-9999', endereco: 'Rua das Flores, 120 - Centro' });
+export default function Perfil({ ir, usuario, setUsuario }) {
+  const [dados, setDados] = useState(usuario); // cópia editável do usuário recebido
 
   // atualiza só o campo digitado, mantendo os outros
   const editar = (campo) => (valor) => setDados({ ...dados, [campo]: valor });
+
+  // só ao salvar o objeto usuário do App é atualizado
+  const salvar = () => {
+    setUsuario(dados);
+    Alert.alert('Pronto!', 'Dados atualizados.');
+  };
 
   return (
     <View style={estilos.tela}>
@@ -20,7 +25,7 @@ export default function Perfil({ ir }) {
       <Campo rotulo="TELEFONE / WHATSAPP" value={dados.telefone} onChangeText={editar('telefone')} />
       <Campo rotulo="ENDEREÇO PRINCIPAL" value={dados.endereco} onChangeText={editar('endereco')} />
 
-      <Botao titulo="Salvar Alterações" aoPressionar={() => Alert.alert('Pronto!', 'Dados atualizados.')} />
+      <Botao titulo="Salvar Alterações" aoPressionar={salvar} />
       <Botao titulo="Sair da Conta (Voltar ao Login)" fundo="#FDECEC" corTexto={cores.vermelho}
         estilo={{ marginTop: 10 }} aoPressionar={() => ir('cadastro')} />
     </View>
