@@ -14,3 +14,11 @@ export const NOTIFICACOES = [
   { id: 2, tipo: 'Aviso', titulo: 'Itens Frescos Chegaram', mensagem: 'Novos produtos prontos para entrega rápida.', lida: false },
   { id: 3, tipo: 'Pedido', titulo: 'Pedido Entregue', mensagem: 'Seu pedido anterior foi concluído. Bom apetite!', lida: true },
 ];
+
+// Objeto USUÁRIO: criado no App.js e passado como prop para Cadastro, Perfil e Checkout
+export const USUARIO_INICIAL = {
+  nome: 'Alan Marcelo',
+  email: 'alan@localmarket.com',
+  telefone: '(83) 99999-9999',
+  endereco: 'Rua das Flores, 120 - Centro',
+};
